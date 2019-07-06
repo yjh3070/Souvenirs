@@ -7,6 +7,15 @@
         <title>Souvenirs</title>
         <link rel="shortcut icon" href="favicon.ico">
         <script>
+            function preview(View_area) {
+                var preview = document.getElementById(View_area);
+                var img = document.createElement("img");
+                img.id = "prev_" + View_area;
+                img.scr = 'no_detail_img.png';
+                img.style.width = '614px'; 
+                img.style.height = '500px';
+                preview.appendChild(img);
+            }
             function previewImage(targetObj, View_area) {
                 var preview = document.getElementById(View_area); //div id
                 var ua = window.navigator.userAgent;
@@ -156,13 +165,12 @@
                 font-family: MGothic, sans-serif;
             }
             #fullpage {
-                margin-left: 460px;
+                margin-top: 150px;
+                margin-left: 800px;
             }
             .cGcGK {
                 float: left;
                 margin-right: 28px;
-                max-width: 81.250em; 
-                width: 100%;
             }
             #View_area{
                 width: 614px;
@@ -171,8 +179,8 @@
                 border: 1px solid black;
                 display: inline-block;
             }
-            form{
-                border: 1px solid gray;
+            .filebox{
+                text-align: right;
             }
             .filebox label {
                 font-family: MGothic, sans-serif;
@@ -253,7 +261,7 @@
             <div class="cGcGK">
                 <div class="filebox">
                     <form method="post" action="./main.html" style="margin: 0;">
-                        <div id='View_area'></div>
+                        <div id='View_area' onload="preview('View_area')"></div>
                         <textarea name="story" id="" cols="30" rows="6"></textarea>
                         <select name="" id="">
                             <option value="all">전체공개</option>
