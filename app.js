@@ -7,7 +7,15 @@ app.use(express.static(path.join(__dirname+'/public')));
 app.set('view engine', 'ejs');
 
 app.get('/',function(req, res){
-    res.render('home');
+    res.render('login');
+});
+
+app.post('/',function(req, res){
+    res.render('login');
+});
+
+app.get('/SignUp',function(req, res){
+    res.render('SignUp');
 });
 
 app.get('/imgUp',function(req, res){
@@ -16,6 +24,14 @@ app.get('/imgUp',function(req, res){
 
 app.get('/main',function(req, res){
     res.render('main');
+});
+
+app.post('/main',function(req, res){
+    res.render('main');
+});
+
+app.get('/friend',function(req, res){
+    res.render('Friend');
 });
 
 app.listen(5000, function(){

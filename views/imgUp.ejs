@@ -7,15 +7,6 @@
         <title>Souvenirs</title>
         <link rel="shortcut icon" href="favicon.ico">
         <script>
-            function preview(View_area) {
-                var preview = document.getElementById(View_area);
-                var img = document.createElement("img");
-                img.id = "prev_" + View_area;
-                img.scr = 'no_detail_img.png';
-                img.style.width = '614px'; 
-                img.style.height = '500px';
-                preview.appendChild(img);
-            }
             function previewImage(targetObj, View_area) {
                 var preview = document.getElementById(View_area); //div id
                 var ua = window.navigator.userAgent;
@@ -85,6 +76,7 @@
                 }
             }
         </script>
+        <link rel="stylesheet" type="text/css" href="header.css">
         <style>
             @media (max-height: 890px){
                 #header {
@@ -109,68 +101,9 @@
                 background: #FFC2C5;
                 padding: 50px 0;
             }
-            a {
-                color: #555;
-                text-decoration: none;
-                margin: 0;
-                padding: 0;
-                vertical-align: baseline;
-            }
-            #header .logo a {
-                display: inline-block;
-                padding-bottom: 40px;
-            }
-            #header .logo {
-                position: relative;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-            #header .logo::after {
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 180px;
-                height: 1px;
-                background: #fdf4f4;
-                content: '';
-            }
-            ul, li {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-            ul {
-                display: block;
-                list-style-type: disc;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
-                padding-inline-start: 40px;
-            }
-            li {
-                display: list-item;
-                text-align: -webkit-match-parent;
-            }
-            #nav > ul > li > a {
-                display: inline-block;
-                padding: 25px 41px 10px 48px;
-                font-size: 1.9rem;
-                color: #2d2d2d;
-                font-family: MGothic, sans-serif;
-                font-weight: 600;
-            }
-            ul > li{
-                font-family: MGothic, sans-serif;
-            }
             #fullpage {
                 margin-top: 50px;
-                margin-left: 650px;
-            }
-            .cGcGK {
-                float: left;
-                margin-right: 28px;
+                margin-left: 600px;
             }
             #View_area{
                 width: 614px;
@@ -242,16 +175,14 @@
                 <nav id="nav">
                     <ul>
                         <li>
-                            <a href="main.html">
+                            <a href="/main" class="group">
                                 <span>그룹 1</span>
                             </a>
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        <span>사진 업로드</span>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li>
+                            <a href="/imgUp" class="upload">
+                                <span>업로드</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -260,8 +191,8 @@
         <div id="fullpage">
             <div class="cGcGK">
                 <div class="filebox">
-                    <form method="post" action="./main.html" style="margin: 0;">
-                        <div id='View_area' onload="preview('View_area')"></div>
+                    <form method="post" action="/main" enctype="multipart/form-data" style="margin: 0;">
+                        <div id='View_area'></div>
                         <textarea name="story" id="" cols="30" rows="6"></textarea>
                         <select name="" id="">
                             <option value="all">전체공개</option>

@@ -5,23 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Souvenirs</title>
         <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="header.css">
         <style>
-            @media ( max-width: 1000px ) {
-                .utilityBlock{
-                    -moz-box-flex: 0.3;
-                    -ms-flex: 0.3;
-                    flex: 0.3;
-                }
-                .Block{
-                    -moz-box-flex: 0.7;
-                    -ms-flex: 0.7;
-                    flex: 0.7;
-                }
-                .profile{
-                    width: 60%;
-                }
-            }
-            @media (min-width: 1001px){
+            /* @media ( max-width: 1000px ) {
                 .utilityBlock{
                     -moz-box-flex: 0.25;
                     -ms-flex: 0.25;
@@ -31,6 +17,21 @@
                     -moz-box-flex: 0.75;
                     -ms-flex: 0.75;
                     flex: 0.75;
+                }
+                .profile{
+                    width: 60%;
+                }
+            }
+            @media (min-width: 1001px){
+                .utilityBlock{
+                    -moz-box-flex: 0.2;
+                    -ms-flex: 0.2;
+                    flex: 0.2;
+                }
+                .Block{
+                    -moz-box-flex: 0.8;
+                    -ms-flex: 0.8;
+                    flex: 0.8;
                 }
             }
             html, body {
@@ -77,6 +78,21 @@
                 line-height: 20px;
                 overflow-y: scroll;
             }
+            .utilityBlock > div > a > img{
+                padding-bottom: 20%;
+            } */
+            #header {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 280px;
+                height: 100vh;
+                background: #FFC2C5;
+                padding: 50px 0;
+            }
+            #header > div{
+                text-align: center;
+            }
             .FriAdd {
                 width:100px;
                 background-color: #FFC2C5;
@@ -88,23 +104,69 @@
                 cursor: pointer;
                 border-radius:10px;
             }
+            article{
+                display:inline-block;
+                border-radius: 3px;
+                border: 1px solid #e6e6e6;
+                max-width: 464px;
+                margin-right: 60px;
+                margin-bottom: 40px;
+            }
+            article > span{
+                font-family: MGothic, sans-serif;
+            }
+            article > div > img{
+                height: 350px;
+                width: 100%;
+            }
+            #fullpage {
+                margin-top: 50px;
+                margin-left: 400px;
+            }
         </style>
     </head>
     <body>
-            <div class="content">
-                <div class="cell utilityBlock">
-                    <div>
-                        <img src="profile.png" class="profile">
-                        <h2>닉네임</h3>
-                            <form action="">
-                                <button type="submit" class="FriAdd">친구추가</button>
-                            </form>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere saepe non quos unde pariatur repellendus atque culpa soluta amet. Deleniti exercitationem dicta, id dolore mollitia blanditiis voluptates excepturi consectetur fugit?
-
+            <header id="header">
+                <div>
+                    <div class="logo">
+                        <a href="/main">
+                            <img src="mainLogo.png" width="80%">
+                        </a>
                     </div>
+                    <img src="profile.png" class="profile">
+                    <h2>닉네임</h3>
+                        <form action="">
+                            <button type="submit" class="FriAdd">친구추가</button>
+                        </form>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere saepe non quos unde pariatur repellendus atque culpa soluta amet. Deleniti exercitationem dicta, id dolore mollitia blanditiis voluptates excepturi consectetur fugit?
                 </div>
-                <div class="cell Block">
-                    <img src="LOGO.png" alt="">
+            </header>
+            <div id="fullpage">
+                <div class="cGcGK">
+                    <article>
+                        <div>
+                            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2018%2F04%2Fphoto-editor-app-recommendation-01.jpg?q=75&w=800&cbr=1&fit=max" alt="">
+                        </div>
+                        <div>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis sit recusandae hic ea odit unde ipsa dignissimos numquam minus beatae voluptatem sapi</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div>
+                            <img src="https://www.apple.com/newsroom/images/product/iphone/lifestyle/Shot-on-iPhone-Challenge-Announcement-Swimming-in-water_big.jpg.large.jpg" alt="">
+                        </div>
+                        <div>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis sit recusandae hic ea odit unde ipsa dignissimos numquam minus beatae voluptatem sapi</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div>
+                            <img src="https://s-i.huffpost.com/gen/2547904/images/n-LENS-GIRL-628x314.jpg" alt="">
+                        </div>
+                        <div>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis debitis sit recusandae hic ea odit unde ipsa dignissimos numquam minus beatae voluptatem sapi</span>
+                        </div>
+                    </article>
                 </div>
             </div>
     </body>
