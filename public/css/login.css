@@ -104,3 +104,7 @@ input[type="text"], input[type="password"] {
 .imga{
     text-align: center;
 }
+h4{
+    margin: 0px;
+    color: rgb(190, 0, 0);
+}

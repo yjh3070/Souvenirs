@@ -9,11 +9,11 @@ app.use(express.static(path.join(__dirname+'/public/img')));
 app.set('view engine', 'ejs');
 
 app.get('/',function(req, res){
-    res.render('login');
+    res.render('login', {massage: ''});
 });
 
-app.post('/',function(req, res){
-    res.render('login');
+app.post('/login',function(req, res){
+    res.render('login', {massage: '아이디 또는 비밀번호가 틀렸습니다'} );
 });
 
 app.get('/SignUp',function(req, res){

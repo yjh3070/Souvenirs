@@ -11,7 +11,7 @@
         <div class="content">
             <div class="cell utilityBlock">
                 <div class="textbox">
-                    <form method="post" id="authForm" action="/main">
+                    <form method="post" id="authForm" action="/login">
                             <h1 class="Login_name">Login</h2>
                             <div class="box_login">
                             <div class="inp_text">
@@ -22,6 +22,7 @@
                                 <label for="loginPw">비밀번호</label>
                                 <input type="password" id="loginPw" name="password" placeholder=" Password" required>
                             </div>
+                            <h4><%= massage %></h4>
                             </div>
                             <div align="right">
                                 <button type="submit" class="btn_login">Login</button>
