@@ -3,6 +3,8 @@ var path = require('path');
 var app = express();
 
 app.use(express.static(path.join(__dirname+'/public')));
+app.use(express.static(path.join(__dirname+'/public/css')));
+app.use(express.static(path.join(__dirname+'/public/img')));
 
 app.set('view engine', 'ejs');
 
