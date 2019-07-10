@@ -21,23 +21,23 @@ app.post('/login',function(req, res){
 });
 
 app.get('/SignUp',function(req, res){
-    res.render('SignUp');
+    res.redirect('SignUp');
 });
 
 app.get('/imgUp',function(req, res){
-    res.render('imgUp');
+    res.redirect('imgUp');
 });
 
 app.get('/main',function(req, res){
-    res.render('main');
+    res.redirect('main');
 });
 
 app.post('/main',function(req, res){
-    res.render('main');
+    res.redirect('main');
 });
 
 app.get('/friend',function(req, res){
-    res.render('Friend');
+    res.redirect('Friend');
 });
 
 app.listen(5000, function(){
