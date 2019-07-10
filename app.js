@@ -12,6 +12,10 @@ app.get('/',function(req, res){
     res.render('login', {massage: ''});
 });
 
+app.get('/login',function(req, res){
+    res.render('login', {massage: ''} );
+});
+
 app.post('/login',function(req, res){
     res.render('login', {massage: '아이디 또는 비밀번호가 틀렸습니다'} );
 });
