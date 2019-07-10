@@ -8,24 +8,15 @@ app.use(express.static(path.join(__dirname+'/public/img')));
 
 app.set('view engine', 'ejs');
 
-app.get('/',function(req, res){
-    res.render('login', {massage: ''});
-});
+var loginRouter = require('./routers/login');
+var postRouter = require('./routers/post');
 
-app.get('/login',function(req, res){
-    res.render('login', {massage: ''} );
-});
-
-app.post('/login',function(req, res){
-    res.render('login', {massage: '아이디 또는 비밀번호가 틀렸습니다'} );
-});
+app.use('/', loginRouter);
+app.use('/login', loginRouter);
+app.use('/PostUp', postRouter);
 
 app.get('/SignUp',function(req, res){
     res.render('SignUp');
-});
-
-app.get('/imgUp',function(req, res){
-    res.render('imgUp');
 });
 
 app.get('/main',function(req, res){
