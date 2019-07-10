@@ -51,8 +51,8 @@
                         img.id = "prev_" + View_area;
                         img.classList.add("obj");
                         img.file = file;
-                        img.style.width = '614px'; 
-                        img.style.height = '500px';
+                        img.style.width = '612px'; 
+                        img.style.height = '498px';
                         preview.appendChild(img);
                         if (window.FileReader) { // FireFox, Chrome, Opera 확인.
                             var reader = new FileReader();
@@ -75,8 +75,28 @@
                     }
                 }
             }
+            function prevImgRemoved(View_area){
+                var preview = document.getElementById(View_area); //div id
+                var ua = window.navigator.userAgent;
+
+                if (ua.indexOf("MSIE") > -1) {
+                    var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
+                    if (ie_preview_error) {
+                        preview.removeChild(ie_preview_error); //error가 있으면 delete
+                    }
+                } else {
+                    var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+                    if (prevImg) {
+                        preview.removeChild(prevImg);
+                    }
+                }
+                
+            }
         </script>
         <link rel="stylesheet" type="text/css" href="header.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <style>
             @media (max-height: 890px){
                 #header {
@@ -89,8 +109,16 @@
                 src: local('210 M고딕050'),
                      url('210 M고딕050.ttf') format('truetype');
             }
-            *{
-                font-family: MGothic 'sans-serif'
+            html{
+                font-size: 1rem;
+            }
+            a:hover, a:focus{
+                color: #2d2d2d;
+                text-decoration: none;
+            }
+            a:focus{
+                outline: none;
+                outline-offset: none;
             }
             #header {
                 position: fixed;
@@ -102,8 +130,8 @@
                 padding: 50px 0;
             }
             #fullpage {
-                margin-top: 50px;
-                margin-left: 600px;
+                margin-top: 13px;
+                margin-left: 300px;
             }
             #View_area{
                 width: 614px;
@@ -112,16 +140,14 @@
                 border: 1px solid black;
                 display: inline-block;
             }
-            .filebox{
-                text-align: right;
-            }
             .filebox label {
                 font-family: MGothic, sans-serif;
-                display: inline-block;
+                display: block;
+                width: 150px;
+                text-align: center;
                 padding: 10px 50px;
                 font-size: 0.8em;
                 line-height: normal;
-                vertical-align: middle;
                 background-color: #FFC2C5;
                 cursor: pointer;
                 border-radius: .20em;
@@ -155,12 +181,22 @@
             }
             button{
                 font-family: MGothic, sans-serif;
-                background-color: #FFC2C5;
                 border: none;
+                margin-right: 10px;
+                display: block;
+                width: 150px;
+                text-align: center;
                 padding: 10px 50px;
-                border-radius: .20em;
-                cursor: pointer;
                 font-size: 0.8em;
+                line-height: normal;
+                background-color: #FFC2C5;
+                cursor: pointer;
+                border-radius: .20em;
+                -webkit-transition: background-color 0.2s;
+                transition: background-color 0.2s;
+            }
+            .table{
+                margin-bottom: 20px;
             }
         </style>
     </head>
@@ -191,18 +227,37 @@
         <div id="fullpage">
             <div class="cGcGK">
                 <div class="filebox">
-                    <form method="post" action="/main" enctype="multipart/form-data" style="margin: 0;">
-                        <div id='View_area'></div>
-                        <textarea name="story" id="" cols="30" rows="6"></textarea>
-                        <select name="" id="">
-                            <option value="all">전체공개</option>
-                            <option value="group1">그룹 1 공개</option>
-                            <option value="me">나만보기</option>
-                        </select>
-                        <label for="profile_pt">사진</label>
-                        <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-                        <button type="submit">업로드</button>
-                    </form>
+                    <div class="container">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <form action="/main" method="post" encType="multiplart/form-data">
+                                    <tr>
+                                        <th>제목: </th>
+                                        <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th>내용: </th>
+                                        <td><textarea cols="10" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <th>사진: </th>
+                                        <td>
+                                            <div id='View_area'></div>
+                                            <label for="profile_pt">사진첨부</label>
+                                            <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button type="submit"class="pull-right">등록</button>
+                                            <button type="reset" class="pull-left" onclick="prevImgRemoved('View_area')">reset</button>
+                                            <button class="pull-right" onclick="javascript:location.href='main'">글 목록</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
