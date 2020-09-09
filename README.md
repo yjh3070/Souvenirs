@@ -1,5 +1,5 @@
 # Souvenirs
-지원이와 정화의 추억 공유 사이트
+추억 공유 사이트
 
 'Souvenirs'
 
